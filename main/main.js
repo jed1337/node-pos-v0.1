@@ -10,13 +10,13 @@ module.exports = function main() {
     	productList.map(arg=>arg.Name)
     	));
 
-    let inventoryText = "***<store earning no money>Receipt ***\n";
+    let receipt = "***<store earning no money>Receipt ***\n";
     for(let productName of productNames){
-    	inventoryText+=formattedProductName(productName, productList);
+    	receipt+=formattedProductName(productName, productList);
     }
-    inventoryText+=footer(productList);
-    
-    return inventoryText;
+    receipt+=footer(productList);
+
+    return receipt;
 };
 
 function formattedProductName(productName, productList){
@@ -32,10 +32,10 @@ function formattedProductName(productName, productList){
 	const subTotal = (quantity*matchingProduct.Price).toFixed(DECIMAL_PLACES);
 
 	return `Name: ${matchingProduct.Name}, `+
-	`Quantity: ${quantity}${parseUnit(matchingProduct, quantity)}, `+
-	`Unit price: ${price} (yuan), `+
-	`Subtotal: ${subTotal} (yuan)`+
-	`\n`;
+		`Quantity: ${quantity}${parseUnit(matchingProduct, quantity)}, `+
+		`Unit price: ${price} (yuan), `+
+		`Subtotal: ${subTotal} (yuan)`+
+		`\n`;
 }
 
 function parseUnit(matchingProduct, quantity){
@@ -52,11 +52,11 @@ function parseUnit(matchingProduct, quantity){
 }
 
 function footer(productList){
-	let inventoryText = "----------------------\n";
-    inventoryText+=`Total: ${getTotal(productList)} (yuan)\n`
-    inventoryText+="**********************\n";
+	let footerText = "----------------------\n";
+    footerText+=`Total: ${getTotal(productList)} (yuan)\n`
+    footerText+="**********************\n";
 
-    return inventoryText;
+    return footerText;
 }
 
 function getTotal(productList){
