@@ -53,7 +53,7 @@ function parseUnit(matchingProduct, quantity){
 
 function footer(productList){
 	let inventoryText = "----------------------\n";
-    inventoryText+=`Total: ${getTotal(arguments[0])} (yuan)\n`
+    inventoryText+=`Total: ${getTotal(productList)} (yuan)\n`
     inventoryText+="**********************\n";
 
     return inventoryText;
